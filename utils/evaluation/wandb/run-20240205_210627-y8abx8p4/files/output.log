@@ -1,0 +1,44 @@
+wandb: Streaming LlamaIndex events to W&B at https://wandb.ai/arunk777/gemini-test/runs/y8abx8p4
+wandb: `WandbCallbackHandler` is currently in beta.
+wandb: Please report any issues to https://github.com/wandb/wandb/issues with the tag `llamaindex`.
+[nltk_data] Downloading package punkt to /Users/asanthan/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /Users/asanthan/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+Parsing nodes: 100%|██████████| 1/1 [00:00<00:00, 35.54it/s]
+
+
+100%|██████████| 8/8 [00:21<00:00,  2.64s/it]
+100%|██████████| 2/2 [00:01<00:00,  1.65it/s]
+100%|██████████| 2/2 [00:01<00:00,  1.07it/s]
+100%|██████████| 2/2 [00:15<00:00,  7.87s/it]
+100%|██████████| 2/2 [00:00<00:00,  2.13it/s]
+
+100%|██████████| 2/2 [00:07<00:00,  3.70s/it]
+100%|██████████| 2/2 [00:01<00:00,  1.50it/s]
+100%|██████████| 2/2 [00:07<00:00,  3.72s/it]
+
+
+100%|██████████| 2/2 [00:04<00:00,  2.23s/it]
+['What is the maximum number of axes that can be supported by a single Power Interface Module (PIM) in the ArmorKinetix system?', 'What are the safety features available in the ArmorKinetix System Single-axis Distributed Servo Drives (DSD) and Single-axis Distributed Servo Motors (DSM)?', 'What is the purpose of the 2198-KITCON-PIM070 connector kit?', 'What are the compatible motors for the Kinetix VP series?', 'What is the maximum total cable length for the ArmorKinetix system, including the PIM, DSD (including motor connections), and DSM modules?', 'What is the purpose of the 2198 external passive-shunt resistors?', 'In the linear topology example, what is the purpose of the 1783-ETAP module?', 'In the device level ring topology, what happens if one device in the ring is disconnected?', 'What is the purpose of a device level ring (DLR) supervisor in an EtherNet/IP network, and what is an example of a DLR supervisor device?', 'In the context of the ArmorKinetix System, what is the purpose of the 1585J-M8CBJM-OM15 Ethernet cable, and where is it typically used?', 'What is the purpose of the magnetic contactor (M1) control string in the ArmorKinetix System Servo Drive System?', 'Explain the significance of the 2198-DBR200-F AC Line Filter in the Extended DC-bus Configuration Example.', 'In the extended DC-bus configuration example, what is the purpose of the capacitor module and extension module?', 'What is the maximum DC-bus current that the Kinetix 5700 servo drive system can handle, and when are accessory modules required?', 'What is the purpose of the magnetic (M1) contactor in the Kinetix System Servo Drives Cluster?', 'What are the safety functions supported by the ArmorKinetix DSD and DSM modules when integrated with a GuardLogix or Compact GuardLogix safety controller?']
+   query contexts  ... invalid_result  invalid_reason
+0   None       []  ...          False            None
+1   None       []  ...          False            None
+2   None       []  ...          False            None
+3   None       []  ...          False            None
+4   None       []  ...          False            None
+5   None       []  ...          False            None
+6   None       []  ...          False            None
+7   None       []  ...          False            None
+8   None       []  ...          False            None
+9   None       []  ...          False            None
+10  None       []  ...          False            None
+11  None       []  ...          False            None
+12  None       []  ...          False            None
+13  None       []  ...          False            None
+14  None       []  ...          False            None
+15  None       []  ...          False            None
+[16 rows x 9 columns]
+0.0 0.0

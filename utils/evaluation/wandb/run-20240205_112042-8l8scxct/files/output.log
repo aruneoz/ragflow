@@ -1,0 +1,59 @@
+wandb: Streaming LlamaIndex events to W&B at https://wandb.ai/arunk777/gemini-test/runs/8l8scxct
+wandb: `WandbCallbackHandler` is currently in beta.
+wandb: Please report any issues to https://github.com/wandb/wandb/issues with the tag `llamaindex`.
+[nltk_data] Downloading package punkt to /Users/asanthan/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /Users/asanthan/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+Parsing nodes: 100%|██████████| 1/1 [00:00<00:00, 35.55it/s]
+
+
+
+100%|██████████| 8/8 [00:09<00:00,  1.23s/it]
+100%|██████████| 2/2 [00:03<00:00,  1.50s/it]
+100%|██████████| 2/2 [00:01<00:00,  1.15it/s]
+100%|██████████| 2/2 [00:01<00:00,  1.35it/s]
+
+100%|██████████| 2/2 [00:02<00:00,  1.48s/it]
+100%|██████████| 2/2 [00:04<00:00,  2.48s/it]
+
+100%|██████████| 2/2 [00:04<00:00,  2.27s/it]
+100%|██████████| 2/2 [00:03<00:00,  1.58s/it]
+100%|██████████| 2/2 [00:02<00:00,  1.21s/it]
+Traceback (most recent call last):
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/rag_evaluation.py", line 119, in <module>
+    loop = asyncio.run(batch())
+  File "/Users/asanthan/.pyenv/versions/3.10.10/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/asanthan/.pyenv/versions/3.10.10/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/rag_evaluation.py", line 107, in batch
+    eval_results = await runner.aevaluate_queries(
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/evaluation/batch_runner.py", line 263, in aevaluate_queries
+    responses = await self.asyncio_mod.gather(*response_jobs)
+  File "/Users/asanthan/.pyenv/versions/3.10.10/lib/python3.10/asyncio/tasks.py", line 232, in __step
+    result = coro.send(None)
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/evaluation/batch_runner.py", line 56, in response_worker
+    return await query_engine.aquery(query)
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/core/base_query_engine.py", line 46, in aquery
+    return await self._aquery(str_or_query_bundle)
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/query_engine/retriever_query_engine.py", line 186, in _aquery
+    nodes = await self.aretrieve(query_bundle)
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/query_engine/retriever_query_engine.py", line 131, in aretrieve
+    nodes = await self._retriever.aretrieve(query_bundle)
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/core/base_retriever.py", line 244, in aretrieve
+    nodes = await self._aretrieve(query_bundle)
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/indices/vector_store/retrievers/retriever.py", line 99, in _aretrieve
+    await embed_model.aget_agg_embedding_from_queries(
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/core/embeddings/base.py", line 152, in aget_agg_embedding_from_queries
+    query_embeddings = [await self.aget_query_embedding(query) for query in queries]
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/core/embeddings/base.py", line 152, in <listcomp>
+    query_embeddings = [await self.aget_query_embedding(query) for query in queries]
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/core/embeddings/base.py", line 126, in aget_query_embedding
+    query_embedding = await self._aget_query_embedding(query)
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/embeddings/google_palm.py", line 59, in _aget_query_embedding
+    return await self._model.aget_embedding(query)
+AttributeError: module 'google.generativeai' has no attribute 'aget_embedding'
+What is the maximum number of axes that can be supported by a single Power Interface Module (PIM) in the ArmorKinetix system?

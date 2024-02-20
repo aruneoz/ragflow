@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-api
+  labels:
+    k8s-app: rag-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: rag-api
+  template:
+    metadata:
+      labels:
+        k8s-app: rag-api
+    spec:
+      serviceAccountName: k8s-service-account
+      containers:
+      - name: rag-api
+        image: us-central1-docker.pkg.dev/greenfielddemos/greenfieldrepo/ragpipeline:v1
+        imagePullPolicy: Always
+        env:
+        - name: FLASK_APP
+          value: "main.py"
+        - name: REDIS_SERVER
+          value: "celery-redis:6379/0"
+        - name: PDF_BATCH_SIZE
+          value: "10"
+        - name: GCS_BUCKET
+          value: "neumai"
+        - name: VECTOR_HOST
+          value: "127.0.0.1"
+        - name: VECTOR_PORT
+          value: "5432"
+        - name: VECTOR_USER
+          value: "admin"
+        - name: VECTOR_PWD
+          value: "sUmmertime123$"
+        - name: VECTOR_DB
+          value: "pgvector"
+        - name: VECTOR_COLLECTIONS
+          value: "neumai_vector_test"
+        command: ["flask"]
+        args: ["run", "--host=0.0.0.0"]
+        ports:
+        - containerPort: 5000
+          name: rag-api
+          protocol: TCP
+

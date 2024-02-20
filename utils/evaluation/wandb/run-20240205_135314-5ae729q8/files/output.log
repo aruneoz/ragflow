@@ -1,0 +1,41 @@
+wandb: Streaming LlamaIndex events to W&B at https://wandb.ai/arunk777/gemini-test/runs/5ae729q8
+wandb: `WandbCallbackHandler` is currently in beta.
+wandb: Please report any issues to https://github.com/wandb/wandb/issues with the tag `llamaindex`.
+[nltk_data] Downloading package punkt to /Users/asanthan/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /Users/asanthan/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+Traceback (most recent call last):
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/embeddings/utils.py", line 48, in resolve_embed_model
+    validate_openai_api_key(embed_model.api_key)
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/llms/openai_utils.py", line 383, in validate_openai_api_key
+    raise ValueError(MISSING_API_KEY_ERROR_MESSAGE)
+ValueError: No API key found for OpenAI.
+Please set either the OPENAI_API_KEY environment variable or openai.api_key prior to initialization.
+API keys can be found or created at https://platform.openai.com/account/api-keys
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/rag_evaluation.py", line 138, in <module>
+    loop = asyncio.run(batch())
+  File "/Users/asanthan/.pyenv/versions/3.10.10/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/asanthan/.pyenv/versions/3.10.10/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/rag_evaluation.py", line 51, in batch
+    gemini_pro_context = ServiceContext.from_defaults(
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/service_context.py", line 191, in from_defaults
+    embed_model = resolve_embed_model(embed_model)
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/lib/python3.10/site-packages/llama_index/embeddings/utils.py", line 50, in resolve_embed_model
+    raise ValueError(
+ValueError:
+******
+Could not load OpenAI embedding model. If you intended to use OpenAI, please check your OPENAI_API_KEY.
+Original error:
+No API key found for OpenAI.
+Please set either the OPENAI_API_KEY environment variable or openai.api_key prior to initialization.
+API keys can be found or created at https://platform.openai.com/account/api-keys
+Consider using embed_model='local'.
+Visit our documentation for more embedding options: https://docs.llamaindex.ai/en/stable/module_guides/models/embeddings.html#modules
+******

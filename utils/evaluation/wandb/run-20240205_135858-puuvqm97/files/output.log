@@ -1,0 +1,38 @@
+wandb: Streaming LlamaIndex events to W&B at https://wandb.ai/arunk777/gemini-test/runs/puuvqm97
+wandb: `WandbCallbackHandler` is currently in beta.
+wandb: Please report any issues to https://github.com/wandb/wandb/issues with the tag `llamaindex`.
+[nltk_data] Downloading package punkt to /Users/asanthan/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /Users/asanthan/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+Parsing nodes: 100%|██████████| 1/1 [00:00<00:00, 35.93it/s]
+
+
+100%|██████████| 8/8 [00:05<00:00,  1.36it/s]
+100%|██████████| 2/2 [00:01<00:00,  1.39it/s]
+100%|██████████| 2/2 [00:01<00:00,  1.03it/s]
+
+100%|██████████| 2/2 [00:03<00:00,  1.67s/it]
+100%|██████████| 2/2 [00:01<00:00,  1.31it/s]
+
+100%|██████████| 2/2 [00:03<00:00,  1.69s/it]
+100%|██████████| 2/2 [00:02<00:00,  1.14s/it]
+100%|██████████| 2/2 [00:01<00:00,  1.27it/s]
+
+
+100%|██████████| 2/2 [00:02<00:00,  1.13s/it]
+What is the maximum number of axes that can be supported by a single Power Interface Module (PIM) in the ArmorKinetix system?
+Traceback (most recent call last):
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/rag_evaluation.py", line 138, in <module>
+    loop = asyncio.run(batch())
+  File "/Users/asanthan/.pyenv/versions/3.10.10/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/asanthan/.pyenv/versions/3.10.10/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/rag_evaluation.py", line 114, in batch
+    evaluator_benchmarker = EvaluatorBenchmarkerPack(evaluator=evaluator,
+  File "/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/pack/base.py", line 32, in __init__
+    self._num_examples = len(self.eval_dataset.examples)
+AttributeError: 'list' object has no attribute 'examples'

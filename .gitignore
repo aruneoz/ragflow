@@ -1,0 +1,15 @@
+venv
+cloudruntasks
+__pycache__
+db_secrets.txt
+utils/chunkers
+utils/cleaners
+utils/loaders/docai_extraction.py
+utils/loaders/MultimodalLoader.py
+utils/loaders/sentencewindow_text.py
+utils/loaders/test.png
+utils/loaders/test_pdf.pdf
+kgchatbot.py
+text.html
+
+

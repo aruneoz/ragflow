@@ -1,0 +1,196 @@
+2024-02-05 13:53:14,822 INFO    StreamThr :91103 [internal.py:wandb_internal():86] W&B internal server running at pid: 91103, started at: 2024-02-05 13:53:14.821461
+2024-02-05 13:53:14,822 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: status
+2024-02-05 13:53:14,824 INFO    WriterThread:91103 [datastore.py:open_for_write():87] open: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/run-5ae729q8.wandb
+2024-02-05 13:53:14,825 DEBUG   SenderThread:91103 [sender.py:send():382] send: header
+2024-02-05 13:53:14,846 DEBUG   SenderThread:91103 [sender.py:send():382] send: run
+2024-02-05 13:53:15,109 INFO    SenderThread:91103 [dir_watcher.py:__init__():211] watching files in: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files
+2024-02-05 13:53:15,109 INFO    SenderThread:91103 [sender.py:_start_run_threads():1136] run started: 5ae729q8 with start time 1707162794.821924
+2024-02-05 13:53:15,118 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: check_version
+2024-02-05 13:53:15,118 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: check_version
+2024-02-05 13:53:15,277 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: run_start
+2024-02-05 13:53:15,284 DEBUG   HandlerThread:91103 [system_info.py:__init__():27] System info init
+2024-02-05 13:53:15,284 DEBUG   HandlerThread:91103 [system_info.py:__init__():42] System info init done
+2024-02-05 13:53:15,284 INFO    HandlerThread:91103 [system_monitor.py:start():194] Starting system monitor
+2024-02-05 13:53:15,284 INFO    SystemMonitor:91103 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-02-05 13:53:15,284 INFO    HandlerThread:91103 [system_monitor.py:probe():214] Collecting system info
+2024-02-05 13:53:15,286 INFO    SystemMonitor:91103 [interfaces.py:start():190] Started cpu monitoring
+2024-02-05 13:53:15,286 DEBUG   HandlerThread:91103 [system_info.py:probe():151] Probing system
+2024-02-05 13:53:15,286 INFO    SystemMonitor:91103 [interfaces.py:start():190] Started disk monitoring
+2024-02-05 13:53:15,289 INFO    SystemMonitor:91103 [interfaces.py:start():190] Started gpuapple monitoring
+2024-02-05 13:53:15,290 INFO    SystemMonitor:91103 [interfaces.py:start():190] Started memory monitoring
+2024-02-05 13:53:15,290 INFO    SystemMonitor:91103 [interfaces.py:start():190] Started network monitoring
+2024-02-05 13:53:15,294 DEBUG   HandlerThread:91103 [system_info.py:_probe_git():136] Probing git
+2024-02-05 13:53:15,314 DEBUG   HandlerThread:91103 [system_info.py:_probe_git():144] Probing git done
+2024-02-05 13:53:15,314 DEBUG   HandlerThread:91103 [system_info.py:probe():199] Probing system done
+2024-02-05 13:53:15,314 DEBUG   HandlerThread:91103 [system_monitor.py:probe():223] {'os': 'macOS-14.3-arm64-arm-64bit', 'python': '3.10.10', 'heartbeatAt': '2024-02-05T19:53:15.286288', 'startedAt': '2024-02-05T19:53:14.816212', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/rag_evaluation.py', 'codePathLocal': 'rag_evaluation.py', 'codePath': 'RAG/utils/evaluation/rag_evaluation.py', 'git': {'remote': 'https://github.com/GoogleCloudPlatform/generative-ai.git', 'commit': 'ce9ad24b03bb628760a418c994013b855ef1b62d'}, 'email': 'arunk777@gmail.com', 'root': '/Users/asanthan/work/development/greenfield/demos/generative-ai', 'host': 'asanthan-macbookpro3.roam.internal', 'username': 'asanthan', 'executable': '/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/bin/python', 'cpu_count': 10, 'cpu_count_logical': 10, 'cpu_freq': {'current': 3228, 'min': 600, 'max': 3228}, 'cpu_freq_per_core': [{'current': 3228, 'min': 600, 'max': 3228}], 'disk': {'/': {'total': 460.4317207336426, 'used': 9.433422088623047}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 16.0}}
+2024-02-05 13:53:15,314 INFO    HandlerThread:91103 [system_monitor.py:probe():224] Finished collecting system info
+2024-02-05 13:53:15,314 INFO    HandlerThread:91103 [system_monitor.py:probe():227] Publishing system info
+2024-02-05 13:53:15,315 INFO    HandlerThread:91103 [system_monitor.py:probe():229] Finished publishing system info
+2024-02-05 13:53:15,317 DEBUG   SenderThread:91103 [sender.py:send():382] send: files
+2024-02-05 13:53:15,317 INFO    SenderThread:91103 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-02-05 13:53:15,320 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: python_packages
+2024-02-05 13:53:15,320 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-05 13:53:15,320 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-05 13:53:15,320 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: python_packages
+2024-02-05 13:53:15,321 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: stop_status
+2024-02-05 13:53:15,576 DEBUG   SenderThread:91103 [sender.py:send():382] send: telemetry
+2024-02-05 13:53:15,584 DEBUG   SenderThread:91103 [sender.py:send():382] send: telemetry
+2024-02-05 13:53:15,825 INFO    wandb-upload_0:91103 [upload_job.py:push():131] Uploaded file /var/folders/w1/1spbztdd5gz8jj8tznx2g01c00g1xm/T/tmp8j7kacxbwandb/rz6ao2ja-wandb-metadata.json
+2024-02-05 13:53:16,115 INFO    Thread-13 :91103 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/output.log
+2024-02-05 13:53:16,115 INFO    Thread-13 :91103 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/requirements.txt
+2024-02-05 13:53:16,115 INFO    Thread-13 :91103 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/wandb-metadata.json
+2024-02-05 13:53:18,124 INFO    Thread-13 :91103 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/output.log
+2024-02-05 13:53:20,369 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 13:53:25,392 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 13:53:30,326 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-05 13:53:30,381 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-05 13:53:30,382 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: stop_status
+2024-02-05 13:53:30,524 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 13:53:35,536 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 13:53:40,554 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 13:53:45,329 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-05 13:53:45,331 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-05 13:53:45,332 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: stop_status
+2024-02-05 13:53:45,672 DEBUG   SenderThread:91103 [sender.py:send():382] send: telemetry
+2024-02-05 13:53:45,675 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 13:53:46,233 INFO    Thread-13 :91103 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/config.yaml
+2024-02-05 13:53:46,463 DEBUG   SenderThread:91103 [sender.py:send():382] send: telemetry
+2024-02-05 13:53:48,128 DEBUG   SenderThread:91103 [sender.py:send():382] send: exit
+2024-02-05 13:53:48,129 INFO    SenderThread:91103 [sender.py:send_exit():589] handling exit code: 1
+2024-02-05 13:53:48,129 INFO    SenderThread:91103 [sender.py:send_exit():591] handling runtime: 32
+2024-02-05 13:53:48,131 INFO    SenderThread:91103 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-05 13:53:48,131 INFO    SenderThread:91103 [sender.py:send_exit():597] send defer
+2024-02-05 13:53:48,133 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:48,133 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 0
+2024-02-05 13:53:48,133 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:48,133 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 0
+2024-02-05 13:53:48,134 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 1
+2024-02-05 13:53:48,134 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:48,134 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 1
+2024-02-05 13:53:48,135 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:48,135 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 1
+2024-02-05 13:53:48,135 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 2
+2024-02-05 13:53:48,135 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:48,135 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 2
+2024-02-05 13:53:48,135 INFO    HandlerThread:91103 [system_monitor.py:finish():203] Stopping system monitor
+2024-02-05 13:53:48,135 DEBUG   SystemMonitor:91103 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-02-05 13:53:48,135 DEBUG   SystemMonitor:91103 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-02-05 13:53:48,135 DEBUG   SystemMonitor:91103 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-02-05 13:53:48,136 INFO    HandlerThread:91103 [interfaces.py:finish():202] Joined cpu monitor
+2024-02-05 13:53:48,136 INFO    HandlerThread:91103 [interfaces.py:finish():202] Joined disk monitor
+2024-02-05 13:53:48,136 INFO    HandlerThread:91103 [interfaces.py:finish():202] Joined gpuapple monitor
+2024-02-05 13:53:48,136 INFO    HandlerThread:91103 [interfaces.py:finish():202] Joined memory monitor
+2024-02-05 13:53:48,136 INFO    HandlerThread:91103 [interfaces.py:finish():202] Joined network monitor
+2024-02-05 13:53:48,137 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:48,137 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 2
+2024-02-05 13:53:48,137 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 3
+2024-02-05 13:53:48,137 DEBUG   SenderThread:91103 [sender.py:send():382] send: telemetry
+2024-02-05 13:53:48,137 DEBUG   SenderThread:91103 [sender.py:send():382] send: stats
+2024-02-05 13:53:48,137 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:48,137 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 3
+2024-02-05 13:53:48,137 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:48,137 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 3
+2024-02-05 13:53:48,137 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 4
+2024-02-05 13:53:48,137 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:48,137 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 4
+2024-02-05 13:53:48,137 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:48,137 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 4
+2024-02-05 13:53:48,137 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 5
+2024-02-05 13:53:48,137 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:48,137 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 5
+2024-02-05 13:53:48,138 DEBUG   SenderThread:91103 [sender.py:send():382] send: summary
+2024-02-05 13:53:48,138 INFO    SenderThread:91103 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-05 13:53:48,138 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:48,138 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 5
+2024-02-05 13:53:48,138 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 6
+2024-02-05 13:53:48,138 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:48,138 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 6
+2024-02-05 13:53:48,138 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:48,138 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 6
+2024-02-05 13:53:48,141 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 13:53:48,225 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 7
+2024-02-05 13:53:48,225 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:48,226 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 7
+2024-02-05 13:53:48,226 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:48,226 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 7
+2024-02-05 13:53:48,238 INFO    Thread-13 :91103 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/config.yaml
+2024-02-05 13:53:48,239 INFO    Thread-13 :91103 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/wandb-summary.json
+2024-02-05 13:53:49,134 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-05 13:53:49,670 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 8
+2024-02-05 13:53:49,670 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: poll_exit
+2024-02-05 13:53:49,671 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:49,671 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 8
+2024-02-05 13:53:49,671 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:49,671 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 8
+2024-02-05 13:53:49,671 INFO    SenderThread:91103 [job_builder.py:build():296] Attempting to build job artifact
+2024-02-05 13:53:49,672 INFO    SenderThread:91103 [job_builder.py:_get_source_type():426] is repo sourced job
+2024-02-05 13:53:49,730 INFO    SenderThread:91103 [job_builder.py:build():402] adding wandb-job metadata file
+2024-02-05 13:53:49,735 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 9
+2024-02-05 13:53:49,735 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:49,735 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 9
+2024-02-05 13:53:49,735 DEBUG   SenderThread:91103 [sender.py:send():382] send: artifact
+2024-02-05 13:53:50,074 INFO    SenderThread:91103 [sender.py:send_artifact():1494] sent artifact job-https___github.com_GoogleCloudPlatform_generative-ai.git_RAG_utils_evaluation_rag_evaluation.py - {'id': 'QXJ0aWZhY3Q6NzE0MzMwODEw', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEzNzI2NDQwMw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NzE0MzMwODEw', 'versionIndex': 5}}}
+2024-02-05 13:53:50,075 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:50,075 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 9
+2024-02-05 13:53:50,075 INFO    SenderThread:91103 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-02-05 13:53:50,136 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-05 13:53:50,244 INFO    SenderThread:91103 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/output.log
+2024-02-05 13:53:50,245 INFO    SenderThread:91103 [dir_watcher.py:finish():388] scan: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files
+2024-02-05 13:53:50,246 INFO    SenderThread:91103 [dir_watcher.py:finish():402] scan save: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/requirements.txt requirements.txt
+2024-02-05 13:53:50,246 INFO    SenderThread:91103 [dir_watcher.py:finish():402] scan save: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/output.log output.log
+2024-02-05 13:53:50,252 INFO    SenderThread:91103 [dir_watcher.py:finish():402] scan save: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/config.yaml config.yaml
+2024-02-05 13:53:50,257 INFO    SenderThread:91103 [dir_watcher.py:finish():402] scan save: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/wandb-summary.json wandb-summary.json
+2024-02-05 13:53:50,261 INFO    SenderThread:91103 [dir_watcher.py:finish():402] scan save: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/wandb-metadata.json wandb-metadata.json
+2024-02-05 13:53:50,261 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 10
+2024-02-05 13:53:50,261 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: poll_exit
+2024-02-05 13:53:50,262 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:50,264 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 10
+2024-02-05 13:53:50,265 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:50,265 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 10
+2024-02-05 13:53:50,265 INFO    SenderThread:91103 [file_pusher.py:finish():175] shutting down file pusher
+2024-02-05 13:53:50,511 INFO    wandb-upload_0:91103 [upload_job.py:push():131] Uploaded file /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/requirements.txt
+2024-02-05 13:53:50,596 INFO    wandb-upload_1:91103 [upload_job.py:push():131] Uploaded file /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/output.log
+2024-02-05 13:53:50,700 INFO    wandb-upload_2:91103 [upload_job.py:push():131] Uploaded file /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/config.yaml
+2024-02-05 13:53:50,852 INFO    wandb-upload_3:91103 [upload_job.py:push():131] Uploaded file /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/files/wandb-summary.json
+2024-02-05 13:53:51,058 INFO    Thread-12 (_thread_body):91103 [sender.py:transition_state():617] send defer: 11
+2024-02-05 13:53:51,059 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:51,059 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 11
+2024-02-05 13:53:51,060 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:51,061 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 11
+2024-02-05 13:53:51,061 INFO    SenderThread:91103 [file_pusher.py:join():181] waiting for file pusher
+2024-02-05 13:53:51,061 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 12
+2024-02-05 13:53:51,062 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:51,062 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 12
+2024-02-05 13:53:51,062 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:51,062 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 12
+2024-02-05 13:53:51,063 INFO    SenderThread:91103 [file_stream.py:finish():595] file stream finish called
+2024-02-05 13:53:51,136 INFO    SenderThread:91103 [file_stream.py:finish():599] file stream finish is done
+2024-02-05 13:53:51,137 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 13
+2024-02-05 13:53:51,139 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:51,139 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 13
+2024-02-05 13:53:51,140 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:51,140 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 13
+2024-02-05 13:53:51,140 INFO    SenderThread:91103 [sender.py:transition_state():617] send defer: 14
+2024-02-05 13:53:51,141 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: defer
+2024-02-05 13:53:51,142 INFO    HandlerThread:91103 [handler.py:handle_request_defer():172] handle defer: 14
+2024-02-05 13:53:51,142 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-05 13:53:51,142 DEBUG   SenderThread:91103 [sender.py:send():382] send: final
+2024-02-05 13:53:51,143 DEBUG   SenderThread:91103 [sender.py:send():382] send: footer
+2024-02-05 13:53:51,143 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: defer
+2024-02-05 13:53:51,144 INFO    SenderThread:91103 [sender.py:send_request_defer():613] handle sender defer: 14
+2024-02-05 13:53:51,144 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: poll_exit
+2024-02-05 13:53:51,145 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-05 13:53:51,146 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: server_info
+2024-02-05 13:53:51,146 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: poll_exit
+2024-02-05 13:53:51,147 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: server_info
+2024-02-05 13:53:51,153 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: get_summary
+2024-02-05 13:53:51,156 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: sampled_history
+2024-02-05 13:53:51,156 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-05 13:53:51,157 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: job_info
+2024-02-05 13:53:51,217 DEBUG   SenderThread:91103 [sender.py:send_request():409] send_request: job_info
+2024-02-05 13:53:51,221 DEBUG   HandlerThread:91103 [handler.py:handle_request():146] handle_request: shutdown
+2024-02-05 13:53:51,221 INFO    HandlerThread:91103 [handler.py:finish():869] shutting down handler
+2024-02-05 13:53:52,160 INFO    WriterThread:91103 [datastore.py:close():296] close: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_135314-5ae729q8/run-5ae729q8.wandb
+2024-02-05 13:53:52,225 INFO    SenderThread:91103 [sender.py:finish():1572] shutting down sender
+2024-02-05 13:53:52,225 INFO    SenderThread:91103 [file_pusher.py:finish():175] shutting down file pusher
+2024-02-05 13:53:52,226 INFO    SenderThread:91103 [file_pusher.py:join():181] waiting for file pusher

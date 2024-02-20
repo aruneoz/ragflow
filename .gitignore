@@ -9,6 +9,8 @@ utils/loaders/MultimodalLoader.py
 utils/loaders/sentencewindow_text.py
 utils/loaders/test.png
 utils/loaders/test_pdf.pdf
+utils/evaluation/wandb
+utils/evaluation/pack
 kgchatbot.py
 text.html
 

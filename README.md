@@ -26,7 +26,7 @@ You can reach through email ([asanthan@google.com](mailto:asanthan@google.com)),
 
 Clone the repo
 ```bash
-git clone 
+git clone https://source.developers.google.com/p/gcp-cft-base/r/ragflow
 ```
 
 Install the [`required`] package:
@@ -54,7 +54,7 @@ With this snippet of code we will craft all of these and run a pipeline:
   ![ragflow concept](data/images/pipeline_flow.png)
 
   ### Creating and running a pipeline
-  </summary>
+ 
   
   ```python
   
@@ -99,7 +99,7 @@ With this snippet of code we will craft all of these and run a pipeline:
 
   print(f"Vectors stored: {pipeline.run()}")
   ```
-<summary>
+
   
 ### Starting the Pipeline
 

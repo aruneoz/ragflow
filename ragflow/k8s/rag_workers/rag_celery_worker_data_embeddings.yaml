@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-worker-dataembeddings
+  labels:
+    k8s-app: rag-worker-dataembeddings
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: rag-worker-dataembeddings
+  template:
+    metadata:
+      labels:
+        k8s-app: rag-worker-dataembeddings
+    spec:
+      serviceAccountName: k8s-service-account
+      containers:
+      - name: cloud-sql-proxy
+        image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:latest
+        args:
+          - "--port=5432"
+          - "greenfielddemos:us-central1:pgvector-contracts"
+        securityContext:
+              # The default Cloud SQL proxy image runs as the
+              # "nonroot" user and group (uid: 65532) by default.
+              runAsNonRoot: true
+      - name: worker-data-embeddings
+        image: us-central1-docker.pkg.dev/greenfielddemos/greenfieldrepo/ragpipeline:v1
+        imagePullPolicy: Always
+        env:
+        - name: REDIS_SERVER
+          value: "celery-redis:6379/0"
+        - name: PDF_BATCH_SIZE
+          value: "10"
+        - name: GCS_BUCKET
+          value: "neumai"
+        - name: VECTOR_HOST
+          value: "127.0.0.1"
+        - name: VECTOR_PORT
+          value: "5432"
+        - name: VECTOR_USER
+          valueFrom:
+            secretKeyRef:
+              name: pgvector-store-secrets
+              key: VECTOR_USER
+        - name: VECTOR_PWD
+          valueFrom:
+            secretKeyRef:
+              name: pgvector-store-secrets
+              key: VECTOR_PWD
+        - name: VECTOR_DB
+          valueFrom:
+            secretKeyRef:
+              name: pgvector-store-secrets
+              key: VECTOR_DB
+        - name: VECTOR_COLLECTIONS
+          value: "neumai_vector_test"
+        - name: NFS_MOUNT
+          value: "/ragspersistentstore"
+        volumeMounts:
+          - name: fileserver
+            mountPath: /ragspersistentstore # the shared directory
+        command: ["celery"]
+        args: ["-A", "tasks", "worker","--queues=data_embed_ingest","--loglevel=debug"]
+        resources:
+          limits:
+            cpu: 1.0
+            memory: 2048Mi
+          requests:
+            cpu: 0.5
+            memory: 2048Mi
+      volumes:
+        - name: fileserver
+          persistentVolumeClaim:
+            claimName: fileserver

@@ -1,0 +1,89 @@
+2024-02-05 20:41:35,204 INFO    StreamThr :36719 [internal.py:wandb_internal():86] W&B internal server running at pid: 36719, started at: 2024-02-05 20:41:35.203158
+2024-02-05 20:41:35,205 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status
+2024-02-05 20:41:35,208 INFO    WriterThread:36719 [datastore.py:open_for_write():87] open: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/run-fs42yq18.wandb
+2024-02-05 20:41:35,208 DEBUG   SenderThread:36719 [sender.py:send():382] send: header
+2024-02-05 20:41:35,227 DEBUG   SenderThread:36719 [sender.py:send():382] send: run
+2024-02-05 20:41:35,841 INFO    SenderThread:36719 [dir_watcher.py:__init__():211] watching files in: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files
+2024-02-05 20:41:35,841 INFO    SenderThread:36719 [sender.py:_start_run_threads():1136] run started: fs42yq18 with start time 1707187295.203943
+2024-02-05 20:41:35,851 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: check_version
+2024-02-05 20:41:35,852 DEBUG   SenderThread:36719 [sender.py:send_request():409] send_request: check_version
+2024-02-05 20:41:35,976 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: run_start
+2024-02-05 20:41:35,992 DEBUG   HandlerThread:36719 [system_info.py:__init__():27] System info init
+2024-02-05 20:41:35,992 DEBUG   HandlerThread:36719 [system_info.py:__init__():42] System info init done
+2024-02-05 20:41:35,992 INFO    HandlerThread:36719 [system_monitor.py:start():194] Starting system monitor
+2024-02-05 20:41:35,992 INFO    SystemMonitor:36719 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-02-05 20:41:35,992 INFO    HandlerThread:36719 [system_monitor.py:probe():214] Collecting system info
+2024-02-05 20:41:35,994 INFO    SystemMonitor:36719 [interfaces.py:start():190] Started cpu monitoring
+2024-02-05 20:41:35,994 INFO    SystemMonitor:36719 [interfaces.py:start():190] Started disk monitoring
+2024-02-05 20:41:35,994 DEBUG   HandlerThread:36719 [system_info.py:probe():151] Probing system
+2024-02-05 20:41:35,997 INFO    SystemMonitor:36719 [interfaces.py:start():190] Started gpuapple monitoring
+2024-02-05 20:41:36,002 INFO    SystemMonitor:36719 [interfaces.py:start():190] Started memory monitoring
+2024-02-05 20:41:36,002 INFO    SystemMonitor:36719 [interfaces.py:start():190] Started network monitoring
+2024-02-05 20:41:36,007 DEBUG   HandlerThread:36719 [system_info.py:_probe_git():136] Probing git
+2024-02-05 20:41:36,053 DEBUG   HandlerThread:36719 [system_info.py:_probe_git():144] Probing git done
+2024-02-05 20:41:36,053 DEBUG   HandlerThread:36719 [system_info.py:probe():199] Probing system done
+2024-02-05 20:41:36,053 DEBUG   HandlerThread:36719 [system_monitor.py:probe():223] {'os': 'macOS-14.3-arm64-arm-64bit', 'python': '3.10.10', 'heartbeatAt': '2024-02-06T02:41:35.994990', 'startedAt': '2024-02-06T02:41:35.193259', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/rag_evaluation.py', 'codePathLocal': 'rag_evaluation.py', 'codePath': 'RAG/utils/evaluation/rag_evaluation.py', 'git': {'remote': 'https://github.com/GoogleCloudPlatform/generative-ai.git', 'commit': 'ce9ad24b03bb628760a418c994013b855ef1b62d'}, 'email': 'arunk777@gmail.com', 'root': '/Users/asanthan/work/development/greenfield/demos/generative-ai', 'host': 'asanthan-macbookpro3.roam.internal', 'username': 'asanthan', 'executable': '/Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/venv/bin/python', 'cpu_count': 10, 'cpu_count_logical': 10, 'cpu_freq': {'current': 3228, 'min': 600, 'max': 3228}, 'cpu_freq_per_core': [{'current': 3228, 'min': 600, 'max': 3228}], 'disk': {'/': {'total': 460.4317207336426, 'used': 9.433422088623047}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 16.0}}
+2024-02-05 20:41:36,053 INFO    HandlerThread:36719 [system_monitor.py:probe():224] Finished collecting system info
+2024-02-05 20:41:36,053 INFO    HandlerThread:36719 [system_monitor.py:probe():227] Publishing system info
+2024-02-05 20:41:36,054 INFO    HandlerThread:36719 [system_monitor.py:probe():229] Finished publishing system info
+2024-02-05 20:41:36,056 DEBUG   SenderThread:36719 [sender.py:send():382] send: files
+2024-02-05 20:41:36,056 INFO    SenderThread:36719 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-02-05 20:41:36,058 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: python_packages
+2024-02-05 20:41:36,059 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-05 20:41:36,059 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-05 20:41:36,059 DEBUG   SenderThread:36719 [sender.py:send_request():409] send_request: python_packages
+2024-02-05 20:41:36,060 DEBUG   SenderThread:36719 [sender.py:send_request():409] send_request: stop_status
+2024-02-05 20:41:36,187 DEBUG   SenderThread:36719 [sender.py:send():382] send: telemetry
+2024-02-05 20:41:36,187 DEBUG   SenderThread:36719 [sender.py:send():382] send: telemetry
+2024-02-05 20:41:36,460 INFO    wandb-upload_0:36719 [upload_job.py:push():131] Uploaded file /var/folders/w1/1spbztdd5gz8jj8tznx2g01c00g1xm/T/tmpxt3cw2eqwandb/09aull8u-wandb-metadata.json
+2024-02-05 20:41:36,843 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:41:36,843 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/requirements.txt
+2024-02-05 20:41:36,843 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/wandb-metadata.json
+2024-02-05 20:41:38,851 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:41:40,656 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:41:45,674 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:41:50,695 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:41:51,079 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-05 20:41:51,080 DEBUG   SenderThread:36719 [sender.py:send_request():409] send_request: stop_status
+2024-02-05 20:41:51,081 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-05 20:41:56,243 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:01,261 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:04,957 DEBUG   SenderThread:36719 [sender.py:send():382] send: telemetry
+2024-02-05 20:42:06,076 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-05 20:42:06,076 DEBUG   SenderThread:36719 [sender.py:send_request():409] send_request: stop_status
+2024-02-05 20:42:06,081 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-05 20:42:07,201 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:07,864 DEBUG   SenderThread:36719 [sender.py:send():382] send: telemetry
+2024-02-05 20:42:07,905 DEBUG   SenderThread:36719 [sender.py:send():382] send: telemetry
+2024-02-05 20:42:07,947 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/config.yaml
+2024-02-05 20:42:08,695 DEBUG   SenderThread:36719 [sender.py:send():382] send: telemetry
+2024-02-05 20:42:08,714 DEBUG   SenderThread:36719 [sender.py:send():382] send: telemetry
+2024-02-05 20:42:08,951 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:10,956 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:12,819 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:12,967 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:14,978 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:16,987 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:18,065 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:18,996 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:21,003 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:21,080 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-05 20:42:21,081 DEBUG   SenderThread:36719 [sender.py:send_request():409] send_request: stop_status
+2024-02-05 20:42:21,084 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-05 20:42:23,013 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:23,372 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:25,026 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:27,030 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:29,025 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:31,051 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/output.log
+2024-02-05 20:42:34,616 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:36,005 DEBUG   SystemMonitor:36719 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-02-05 20:42:36,006 DEBUG   SenderThread:36719 [sender.py:send():382] send: telemetry
+2024-02-05 20:42:36,006 DEBUG   SenderThread:36719 [sender.py:send():382] send: stats
+2024-02-05 20:42:40,023 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:41,091 INFO    Thread-13 :36719 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/asanthan/work/development/greenfield/demos/generative-ai/RAG/utils/evaluation/wandb/run-20240205_204135-fs42yq18/files/config.yaml
+2024-02-05 20:42:45,122 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:50,139 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:42:55,160 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:43:00,180 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report
+2024-02-05 20:43:05,216 DEBUG   HandlerThread:36719 [handler.py:handle_request():146] handle_request: status_report

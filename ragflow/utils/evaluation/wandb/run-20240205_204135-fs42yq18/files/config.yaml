@@ -1,0 +1,45 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.10
+    cli_version: 0.16.2
+    framework: huggingface
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1707187295.203943
+    t:
+      1:
+      - 5
+      - 49
+      - 51
+      - 53
+      - 55
+      - 86
+      - 87
+      - 95
+      2:
+      - 1
+      - 5
+      - 11
+      - 33
+      - 49
+      - 51
+      - 53
+      - 55
+      - 71
+      - 86
+      - 87
+      - 95
+      - 100
+      3:
+      - 23
+      4: 3.10.10
+      5: 0.16.2
+      8:
+      - 4
+      - 5
+      9:
+        2: llama_index
+      13: darwin-arm64

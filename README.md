@@ -32,7 +32,7 @@ git clone https://source.developers.google.com/p/gcp-cft-base/r/ragflow
 Install the [`required`] package:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt.old
 ```
 
 

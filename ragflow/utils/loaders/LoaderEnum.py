@@ -7,6 +7,7 @@ class LoaderEnum(str, Enum):
     csvloader = "csvloader"
     jsonloader = "jsonloader"
     pdfloader = "pdfloader"
+    pdfloaderv1 = "pdfloaderv1"
     unstructuredloader = "unstructuredloader"
 
     def as_loader_enum(loader_name: str):

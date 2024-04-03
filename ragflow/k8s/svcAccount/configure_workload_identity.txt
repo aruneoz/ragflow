@@ -2,9 +2,14 @@
 
 gcloud builds submit --tag us-central1-docker.pkg.dev/greenfielddemos/greenfieldrepo/ragpipeline:v1 .
 
-
 gcloud iam service-accounts add-iam-policy-binding \
     "genai-svc-acct@greenfielddemos.iam.gserviceaccount.com" \
     --member "serviceAccount:greenfielddemos.svc.id.goog[default/k8s-service-account]" \
     --role "roles/iam.workloadIdentityUser" \
     --project greenfielddemos
+
+gcloud iam service-accounts add-iam-policy-binding \
+    "ragflow-svcacc@sab-llm-hack-sbx-6315.iam.gserviceaccount.com" \
+    --member "serviceAccount:sab-llm-hack-sbx-6315.svc.id.goog[default/k8s-service-account]" \
+    --role "roles/iam.workloadIdentityUser" \
+    --project sab-llm-hack-sbx-6315

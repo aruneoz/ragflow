@@ -88,7 +88,7 @@ class AlloyDBSink(SinkConnector):
 
     def getpool(self):
         print(f"Going to get connection from {self.database_host} , ")
-        threaded_postgreSQL_pool = psycopg2.pool.ThreadedConnectionPool(5, 20, user=self.database_user,
+        threaded_postgreSQL_pool = psycopg2.pool.ThreadedConnectionPool(5, 100, user=self.database_user,
                                                                         password=self.database_pwd,
                                                                         host=self.database_host,
                                                                         port=self.database_port,
@@ -178,11 +178,14 @@ class AlloyDBSink(SinkConnector):
             values = []
             for i in range(0, len(vectors_to_store)):
                 metadata = json.dumps(vectors_to_store[i].metadata)
+                #print(str(vectors_to_store[i].metadata["text"]))
+                #del metadata['text']
+                #print("Vector Store Metadata" + metadata)
                 # upsert_embeddings = f"""INSERT INTO {self.database_table_name} (id,file_id,chunk_content,chunk_metadata,embedding)
                 #                                   VALUES('{vectors_to_store[i].id}','{vectors_to_store[i].metadata["filename"]}','{vectors_to_store[i].metadata["text"]}','{metadata}','{vectors_to_store[i].vector}')
                 #                                  ;"""
 
-                values.append((f'{vectors_to_store[i].id}',f'{vectors_to_store[i].metadata["filename"]}',f'{vectors_to_store[i].metadata["text"]}',f'{metadata}',f'{vectors_to_store[i].vector}'))
+                values.append((f'{vectors_to_store[i].id}',f'{vectors_to_store[i].metadata["filename"]}',f'{str(vectors_to_store[i].metadata["text"])}',f'{metadata}',f'{vectors_to_store[i].vector}'))
 
                 #print(upsert_embeddings)
             cursor.executemany(f"""INSERT INTO {self.database_table_name} (id,file_id,chunk_content,chunk_metadata,embedding)

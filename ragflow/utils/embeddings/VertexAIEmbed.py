@@ -110,27 +110,32 @@ class VertexAIEmbed(EmbedConnector):
 
     def embed(self, documents: List[NeumDocument]) -> Tuple[List, dict]:
         """Generate embeddings with OpenAI"""
+        try:
+            # Embedding
+            EMBEDDING_QPM = 100
+            EMBEDDING_NUM_BATCH = 5
 
-        # Embedding
-        EMBEDDING_QPM = 100
-        EMBEDDING_NUM_BATCH = 5
+            embedding = CustomVertexAIEmbeddings(
+                requests_per_minute=EMBEDDING_QPM,
+                num_instances_per_batch=EMBEDDING_NUM_BATCH,
+            )
+            embeddings = []
+            print("Inside Embed......")
+            print(documents[0])
+            texts = [x.content for x in documents]
+            # do we want to persist some embeddings if they were able to be wrriten but not another "batch" of them? or should we treat all texts as an atomic operation
+            embeddings = embedding.embed_documents(texts=texts)
+            # cost_per_token = 0.000000001 # ADA-002 as of Sept 2023
+            info = {
+                "estimated_cost": str("Not implemented"),
+                "total_tokens": str("Not implemented"),
+                "attempts_used": str("Not implemented")
+            }
+        except Exception as e:
+            raise VertexAIConnectionException(f"Embedding couldn't be initialized. See exception: {e}")
 
-        embedding = CustomVertexAIEmbeddings(
-            requests_per_minute=EMBEDDING_QPM,
-            num_instances_per_batch=EMBEDDING_NUM_BATCH,
-        )
-        embeddings = []
-        print(documents[0])
-        texts = [x.content for x in documents]
-        # do we want to persist some embeddings if they were able to be wrriten but not another "batch" of them? or should we treat all texts as an atomic operation
-        embeddings = embedding.embed_documents(texts=texts)
-        # cost_per_token = 0.000000001 # ADA-002 as of Sept 2023
-        info = {
-            "estimated_cost": str("Not implemented"),
-            "total_tokens": str("Not implemented"),
-            "attempts_used": str("Not implemented")
-        }
         return embeddings, info
+
 
     def embed_query(self, query: str) -> List[float]:
         """Generate embeddings for a single query using OpenAI"""

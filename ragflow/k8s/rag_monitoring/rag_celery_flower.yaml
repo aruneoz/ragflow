@@ -17,7 +17,7 @@ spec:
       serviceAccountName: k8s-service-account
       containers:
       - name: flower
-        image: us-central1-docker.pkg.dev/greenfielddemos/greenfieldrepo/ragpipeline:v1
+        image: us-central1-docker.pkg.dev/sab-llm-hack-sbx-6315/gcf-artifacts/ragpipeline:v1
         command: ['celery', "--broker=redis://celery-redis:6379/0" , "flower"]
         ports:
           - containerPort: 5555
@@ -27,19 +27,19 @@ spec:
             - name: PDF_BATCH_SIZE
               value: "10"
             - name: GCS_BUCKET
-              value: "neumai"
+              value: "synxis-src"
             - name: VECTOR_HOST
-              value: "34.170.81.51"
+              value: "127.0.0.1"
             - name: VECTOR_PORT
               value: "5432"
             - name: VECTOR_USER
-              value: "admin"
+              value: "postgres"
             - name: VECTOR_PWD
               value: "sUmmertime123$"
             - name: VECTOR_DB
-              value: "pgvector"
+              value: "synxis-db"
             - name: VECTOR_COLLECTIONS
-              value: "neumai_vector_test"
+              value: "sabre_vector_synxis"
             - name: NFS_MOUNT
               value: "/ragspersistentstore"
         resources:

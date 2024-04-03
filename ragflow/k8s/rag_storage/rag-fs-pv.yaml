@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: filestore-nfs-pv-1
+spec:
+  capacity:
+    storage: 1Ti
+  accessModes:
+  - ReadWriteMany
+  storageClassName: filestore-sc
+  nfs:
+    path: /sharedvol1
+    server: 10.66.81.2

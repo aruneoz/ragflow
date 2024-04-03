@@ -17,17 +17,17 @@ spec:
       serviceAccountName: k8s-service-account
       containers:
       - name: worker-data-extraction
-        image: us-central1-docker.pkg.dev/greenfielddemos/greenfieldrepo/ragpipeline:v1
+        image: us-central1-docker.pkg.dev/sab-llm-hack-sbx-6315/gcf-artifacts/ragpipeline:v1
         imagePullPolicy: Always
         env:
         - name: REDIS_SERVER
           value: "celery-redis:6379/0"
         - name: PDF_BATCH_SIZE
-          value: "10"
+          value: "25"
         - name: GCS_BUCKET
-          value: "neumai"
+          value: "synxis-src"
         - name: VECTOR_HOST
-          value: "34.170.81.51"
+          value: "127.0.0.1"
         - name: VECTOR_PORT
           value: "5432"
         - name: VECTOR_USER
@@ -46,14 +46,14 @@ spec:
                 name: pgvector-store-secrets
                 key: VECTOR_DB
         - name: VECTOR_COLLECTIONS
-          value: "neumai_vector_test"
+          value: "sabre_vector_synxis"
         - name: NFS_MOUNT
-          value: "/ragspersistentstore"
+          value: "/sharedvol1"
         volumeMounts:
           - name: fileserver
-            mountPath: /ragspersistentstore # the shared directory
+            mountPath: /sharedvol1 # the shared directory
         command: ["celery"]
-        args: ["-A", "tasks", "worker", "--concurrency=10","--pool=gevent","--queues=data_processing","--loglevel=debug"]
+        args: ["-A", "tasks", "worker", "--concurrency=10","--pool=gevent","--queues=data_processing","--loglevel=debug" , "-E"]
         resources:
           limits:
             cpu: 6.0
@@ -64,4 +64,7 @@ spec:
       volumes:
         - name: fileserver
           persistentVolumeClaim:
-            claimName: fileserver
+            claimName: fileserver1
+      nodeSelector:
+        #<labelname>:value
+        cloud.google.com/gke-nodepool: ragpool

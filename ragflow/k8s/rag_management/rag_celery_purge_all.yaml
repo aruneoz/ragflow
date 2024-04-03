@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-purge
+  labels:
+    deployment: rag-purge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: rag-purge
+  template:
+    metadata:
+      labels:
+        pod: rag-purge
+    spec:
+      serviceAccountName: k8s-service-account
+      containers:
+      - name: rag-purge
+        image: us-central1-docker.pkg.dev/sab-llm-hack-sbx-6315/gcf-artifacts/ragpipeline:v1
+        command: [ "celery" ]
+        args: [ "-A", "tasks", "purge","-Q data_embed_ingest,data_processing"]
+        ports:
+          - containerPort: 5555
+        env:
+            - name: REDIS_SERVER
+              value: "celery-redis:6379/0"
+            - name: PDF_BATCH_SIZE
+              value: "10"
+            - name: GCS_BUCKET
+              value: "neumai"
+            - name: VECTOR_HOST
+              value: "34.170.81.51"
+            - name: VECTOR_PORT
+              value: "5432"
+            - name: VECTOR_USER
+              value: "admin"
+            - name: VECTOR_PWD
+              value: "sUmmertime123$"
+            - name: VECTOR_DB
+              value: "pgvector"
+            - name: VECTOR_COLLECTIONS
+              value: "neumai_vector_test"
+            - name: NFS_MOUNT
+              value: "/ragspersistentstore"
+        resources:
+          limits:
+            cpu: 100m

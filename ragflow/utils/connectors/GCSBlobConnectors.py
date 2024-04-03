@@ -48,7 +48,6 @@ class GCSBlobConnector(DataConnector):
 
     batch_size: int = Field(..., description="Batch size for PDF processing [required]")
 
-
     selector: Optional[Selector] = Field(Selector(to_embed=[], to_metadata=[]), description="Selector for data connector metadata")
 
     @property
@@ -112,7 +111,8 @@ class GCSBlobConnector(DataConnector):
                 name = file.name
                 metadata = {
                     "id": file.id,
-                     "last_modified": file.updated.isoformat(),
+                    "last_modified": file.updated.isoformat(),
+                    "filename": file.name
                 }
                 selected_metadata  = {k: metadata[k] for k in self.selector.to_metadata if k in metadata}
                 yield CloudFile(file_identifier=name, metadata=selected_metadata, id=name)
@@ -136,7 +136,9 @@ class GCSBlobConnector(DataConnector):
 
         if cloudFile.file_identifier.endswith('.pdf'):
             input_pdf = PdfReader(file_path)
-            num_batches = len(input_pdf.pages) // self.batch_size
+            num_batches = round((len(input_pdf.pages)) / self.batch_size)
+            print("Batch Size :" + str(self.batch_size)  +  "  Pages " + str(len(input_pdf.pages)))
+            print("The no.of batches :" + str(num_batches))
             for b in range(num_batches):
                     writer = PdfWriter()
 
@@ -157,10 +159,10 @@ class GCSBlobConnector(DataConnector):
                         writer.write(output_file)
                     #yield CloudFile()
                     #yield LocalFile(file_path=file_path_batch, metadata=cloudFile.metadata, id=cloudFile.id)
-                    yield CloudFile(file_identifier=file_path_batch, metadata=cloudFile.metadata, id=cloudFile.id)
-            else:
-              #yield LocalFile(file_path=file_path, metadata=cloudFile.metadata, id=cloudFile.id)
-              yield CloudFile(file_identifier=file_path, metadata=cloudFile.metadata, id=cloudFile.id)
+                    yield CloudFile(file_identifier=file_path_batch, metadata=cloudFile.metadata, id=batch_filename)
+            # else:
+            #   #yield LocalFile(file_path=file_path, metadata=cloudFile.metadata, id=cloudFile.id)
+            #   yield CloudFile(file_identifier=file_path, metadata=cloudFile.metadata, id=cloudFile.id)
 
     def config_validation(self) -> bool:
         if not all(x in self.available_metadata for x in self.selector.to_metadata):

@@ -9,6 +9,7 @@ from neumai.Loaders import (
 )
 from ragflow.utils.loaders.LoaderEnum import LoaderEnum
 from ragflow.utils.loaders.UnstructuredLoader import UnstructuredLoader
+from ragflow.utils.loaders.PDFLoaderV1 import PDFLoaderV1
 
 class LoaderFactory:
     """Class that leverages the Factory pattern to get the appropriate loader
@@ -30,6 +31,8 @@ class LoaderFactory:
             return CSVLoader(**loader_information)
         elif loader_name_enum == LoaderEnum.pdfloader:
             return PDFLoader(**loader_information)
+        elif loader_name_enum == LoaderEnum.pdfloaderv1:
+            return PDFLoaderV1(**loader_information)
         elif loader_name_enum == LoaderEnum.unstructuredloader:
             return UnstructuredLoader(**loader_information)
         else:

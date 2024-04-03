@@ -2,6 +2,8 @@ venv
 cloudruntasks
 __pycache__
 db_secrets.txt
+command.txt
+configure_workload_identity.txt
 utils/chunkers
 utils/cleaners
 utils/loaders/docai_extraction.py

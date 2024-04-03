@@ -5,7 +5,7 @@ from neumai.DataConnectors.DataConnector import DataConnector
 from neumai.Chunkers.Chunker import Chunker
 from neumai.Chunkers.RecursiveChunker import RecursiveChunker
 from neumai.Loaders.Loader import Loader
-from neumai.Loaders.AutoLoader import AutoLoader
+from ragflow.utils.loaders.AutoLoader import AutoLoader
 from ragflow.ModelFactories import ChunkerFactory, DataConnectorFactory, LoaderFactory
 from neumai.Shared.NeumDocument import NeumDocument
 from neumai.Shared.LocalFile import LocalFile

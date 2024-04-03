@@ -1,21 +1,21 @@
 import os
 
 from celery import Celery
-from ragflow.pipelines import Pipeline
+from ragflow.pipelines.Pipeline import Pipeline
 from ragflow.pipelines.TriggerSyncTypeEnum import TriggerSyncTypeEnum
 from neumai.Shared.CloudFile import CloudFile
 from neumai.Shared.NeumDocument import NeumDocument
 from ragflow.utils.connectors.SourceConnector import SourceConnector
 from datetime import datetime
 from typing import List
-
+from neumai.Shared.NeumVector import NeumVector
 redis_server = os.environ['REDIS_SERVER']
 
 app = Celery('tasks', broker=f'redis://{redis_server}')
 
 
 # Data Extraction Task
-@app.task
+@app.task(name='ragflow.tasks.data_extraction')
 def data_extraction(pipeline_model: dict, extract_type: TriggerSyncTypeEnum, last_extraction: datetime = None):
   """
   Extract data with
@@ -31,6 +31,7 @@ def data_extraction(pipeline_model: dict, extract_type: TriggerSyncTypeEnum, las
         if extract_type == TriggerSyncTypeEnum.full:
           for file in source.list_files_full():
             print(f"Sending file: {file.id} to data_processing")
+            print(f"Source Info {source.as_json()}")
             data_processing.apply_async(
               kwargs={"pipeline_model": pipeline_model, "source_model": source.as_json(),
                       "cloudFile_model": file.toJson()},
@@ -49,7 +50,7 @@ def data_extraction(pipeline_model: dict, extract_type: TriggerSyncTypeEnum, las
 
 
 # Data Processing Task
-@app.task
+@app.task(name='ragflow.tasks.data_processing')
 def data_processing(pipeline_model: dict, source_model: dict, cloudFile_model: dict):
     """
     Process data with
@@ -86,23 +87,26 @@ def data_processing(pipeline_model: dict, source_model: dict, cloudFile_model: d
 
 
 # Data Embed and Ingest Task
-@app.task
+@app.task(name='ragflow.tasks.data_embed_ingest')
 def data_embed_ingest(pipeline_model: dict, chunks: List[dict]):
     """
     Embed and Ingest data with
     pipeline.embed.embed
     pipeline.sink.store
     """
-    from neumai.Shared.NeumVector import NeumVector
+    try:
 
-    pipeline = Pipeline(**pipeline_model)
-    documents: List[NeumDocument] = [NeumDocument.as_file(chunk) for chunk in chunks]
+        pipeline = Pipeline(**pipeline_model)
+        documents: List[NeumDocument] = [NeumDocument.as_file(chunk) for chunk in chunks]
 
-    vector_embeddings, embeddings_info = pipeline.embed.embed(documents=documents)
-    vectors_to_store = [NeumVector(id=documents[i].id, vector=vector_embeddings[i], metadata=documents[i].metadata) for
-                        i in range(0, len(vector_embeddings))]
-    vectors_written = pipeline.sink.store(
-        vectors_to_store=vectors_to_store,
-        #pipeline_id=pipeline.id,
-    )
-    print(f"Finished embedding and storing {vectors_written} vectors")
+        vector_embeddings, embeddings_info = pipeline.embed.embed(documents=documents)
+        vectors_to_store = [NeumVector(id=documents[i].id, vector=vector_embeddings[i], metadata=documents[i].metadata) for
+                                    i in range(0, len(vector_embeddings))]
+        vectors_written = pipeline.sink.store(
+                    vectors_to_store=vectors_to_store,
+                    #pipeline_id=pipeline.id,
+                )
+        print(f"Finished embedding and storing {vectors_written} vectors")
+    except Exception as e:
+        print(f"Following Exception raised {e}")
+        raise BaseException

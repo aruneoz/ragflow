@@ -4,22 +4,19 @@
 @Descriptor: This is a Demonstration of Distributed RAG Pipeline to process any doc , any layout including multimodal LLM Unstructured.io PDF Loader
 """
 import base64
-import os
-from collections import Counter
 from typing import List, Generator
-import pathlib
-import gcsfs
+from pydantic import Field
 from neumai.Shared import CloudFile
 from neumai.Shared.NeumDocument import NeumDocument
-from neumai.Shared.LocalFile import LocalFile
 from neumai.Loaders.Loader import Loader
-from langchain.document_loaders import UnstructuredPDFLoader,UnstructuredFileLoader
 from unstructured.cleaners.core import clean, clean_non_ascii_chars
 from unstructured.documents.elements import NarrativeText, Title, Image, Table
 from unstructured.partition.pdf import partition_pdf
+from vertexai.generative_models import GenerativeModel
 from vertexai.preview import generative_models
-from vertexai.preview.generative_models import GenerativeModel
-from unstructured.partition.text_type import sentence_count
+
+
+# from langchain_google_vertexai import VertexAI
 
 #from ragflow.utils.interop.DocumentTransformer import document_transformer_to_llamaIndex
 
@@ -33,12 +30,17 @@ class UnstructuredLoader(Loader):
 
     Loads PDF files leveraging UnstructuredLoader.
 
-    Attributes:
-    -----------
-
-    None
+   strategy : str
+        What is the Strategy you want to use for PDF (basic, tables , multimodal)
+   model_name : str
+        Name of the model to use for PDF parser
 
     """
+
+    strategy: str = Field(..., description="Strategy to use for PDF Layout Parser [required]")
+
+    model_name: str = Field(..., description="Model to use [required]")
+
 
     @property
     def loader_name(self) -> str:
@@ -46,7 +48,7 @@ class UnstructuredLoader(Loader):
 
     @property
     def required_properties(self) -> List[str]:
-        return []
+        return ["strategy", "model_name"]
 
     @property
     def optional_properties(self) -> List[str]:
@@ -89,17 +91,27 @@ class UnstructuredLoader(Loader):
         """Load data into Document objects."""
         try:
             print(f"processing {file.file_identifier} ")
-                #fs = gcsfs.GCSFileSystem(project='greenfielddemos')
-                #with fs.open(file.file_identifier, 'rb') as f:
-                    # loader = UnstructuredPDFLoader(file.file_path,strategy="fast",include_metadata=True,chunking_strategy="by_title",multipage_sections=True)
-                    # documents = loader.load()
-                    # print(documents[0].metadata.values())
-            model_name = "yolox"
-                    #elements_fast = partition_pdf(file.file_path, strategy="hi_res",mode="elements",include_metadata=True,chunking_strategy="by_title",multipage_sections=True,pdf_infer_table_structure=True)
-            elements_fast = partition_pdf(file.file_identifier, strategy="hi_res", mode="elements", include_metadata=True,combine_text_under_n_chars=512,
-                                                  model_name=model_name, infer_table_structure=True , extract_images_in_pdf=True, image_output_dir_path=f"images/{file.id}/")
 
-            tables = [el for el in elements_fast if el.category == "Table"]
+            #model_name = "yolox"
+            model_name = self.model_name
+            print("Using the following Strategy : " + self.strategy + "  with model " + self.model_name)
+
+            if(self.strategy.lower()=="multimodal"):
+                elements_fast = partition_pdf(file.file_identifier, strategy="hi_res", mode="elements", include_metadata=True,combine_text_under_n_chars=512,
+                                                  model_name=model_name, infer_table_structure=True , extract_images_in_pdf=True, image_output_dir_path=f"images/{file.id}/")
+            elif(self.strategy.lower()=="table"):
+
+                elements_fast = partition_pdf(file.file_identifier, strategy="hi_res", mode="elements",
+                                              include_metadata=True, combine_text_under_n_chars=512,
+                                              model_name=model_name, infer_table_structure=True,
+                                              extract_images_in_pdf=False, image_output_dir_path=f"images/{file.id}/")
+            else:
+                elements_fast = partition_pdf(file.file_identifier, strategy="hi_res", mode="elements",
+                                              include_metadata=True, combine_text_under_n_chars=512,
+                                              model_name=model_name, infer_table_structure=False,
+                                              extract_images_in_pdf=False, image_output_dir_path=f"images/{file.id}/")
+
+            # tables = [el for el in elements_fast if el.category == "Table"]
                     # join the file and document metadata objects
                     #print(elements_fast)
             docs = []

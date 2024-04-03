@@ -27,12 +27,16 @@ You can reach through email ([asanthan@google.com](mailto:asanthan@google.com)),
 Clone the repo
 ```bash
 git clone https://source.developers.google.com/p/gcp-cft-base/r/ragflow
+cd ragflow
 ```
 
 Install the [`required`] package:
 
+> ℹ️
+> psycopg2-binary requires you to have postgres installed in your machine for e.g. in mac run brew install postgresql@14
+
 ```bash
-pip install ragflow-0.0.1-py3-none-any.whl
+pip install dist/ragflow-0.0.1-py3-none-any.whl
 pip install unstructured[all-docs]==0.12.2
 pip install unstructured[local-inference]==0.12.2
 pip install install pgvector==0.2.5

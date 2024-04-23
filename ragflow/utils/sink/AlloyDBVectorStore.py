@@ -225,7 +225,7 @@ class AlloyDBSink(SinkConnector):
     #
     #     return {"$and": query_parts}  # Combine using $and, can be changed to $or if needed
 
-    def search(self, vector: List[float], number_of_results: int, filters: List[FilterCondition] = []) -> List:
+    def search(self, query: str,vector: List[float], number_of_results: int, filters: List[FilterCondition] = []) -> List:
         threaded_postgreSQL_pool = self.getpool()
         connection = threaded_postgreSQL_pool.getconn()
         cursor = connection.cursor()
@@ -234,11 +234,44 @@ class AlloyDBSink(SinkConnector):
         print(filters)
 
         try:
-            query_statement = f"SELECT id , chunk_content , chunk_metadata , 1- ('{vector}' <-> embedding) AS cosine_similarity FROM {self.database_table_name} ORDER BY embedding <-> '{vector}' LIMIT {number_of_results};"
-            print(query_statement)
-            cursor.execute(query_statement)
+            sql = f"""
+            WITH semantic_search AS (
+                SELECT id, chunk_metadata,RANK () OVER (ORDER BY embedding <-> %(embedding)s) AS rank
+                FROM {self.database_table_name}
+                ORDER BY embedding <-> %(embedding)s
+                LIMIT 20
+            ),
+            keyword_search AS (
+                SELECT id, RANK () OVER (ORDER BY ts_rank_cd(to_tsvector('english', chunk_content), query) DESC)
+                FROM {self.database_table_name}, plainto_tsquery('english', %(query)s) query
+                WHERE to_tsvector('english', chunk_content) @@ query
+                ORDER BY ts_rank_cd(to_tsvector('english', chunk_content), query) DESC
+                LIMIT 20
+            )
+            SELECT
+                COALESCE(semantic_search.id, keyword_search.id) AS id,
+                semantic_search.chunk_metadata,
+                COALESCE(1.0 / (%(k)s + semantic_search.rank), 0.0) +
+                COALESCE(1.0 / (%(k)s + keyword_search.rank), 0.0) AS score
+            FROM semantic_search
+            FULL OUTER JOIN keyword_search ON semantic_search.id = keyword_search.id
+            ORDER BY score DESC
+            LIMIT {number_of_results};
+            """
+            query = query
+            embedding = vector
+            k = 60
+            cursor.execute(sql, {'query': query, 'embedding': str(embedding), 'k': k})
             results = cursor.fetchall()
-            print(results[0])
+
+            # for row in results:
+            #     print('document:', row[0], 'Metadata:', row[1] , 'RRF score:', row[2])
+            #
+            # query_statement = f"SELECT id , chunk_content , chunk_metadata , 1- ('{vector}' <-> embedding) AS cosine_similarity FROM {self.database_table_name} ORDER BY embedding <-> '{vector}' LIMIT {number_of_results};"
+            # #print(query_statement)
+            # cursor.execute(query_statement)
+            # results = cursor.fetchall()
+            # print(results[0])
             cursor.close()
             threaded_postgreSQL_pool.putconn(connection)
 
@@ -250,11 +283,12 @@ class AlloyDBSink(SinkConnector):
                 print("Threaded PostgreSQL connection pool is closed")
         matches = []
         for result in results:
-            matches.append(NeumSearchResult(
-                id=str(result[0]),
-                metadata=json.loads(result[2]),
-                score=result[3]
-            ))
+            if(result[1]!=None):
+                matches.append(NeumSearchResult(
+                    id=str(result[0]),
+                    metadata=json.loads(result[1]),
+                    score=result[2]
+                ))
 
         return matches
 

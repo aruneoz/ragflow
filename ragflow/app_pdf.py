@@ -40,8 +40,11 @@ gcs_connector = GCSBlobConnector(
 source = SourceConnector(
     data_connector=gcs_connector,
     loader=PDFLoaderV1(syn_data=False,dataset_table="test"),
-    chunker=SemChunker(breakpoint_threshold_type='percentile'
-                      )
+    chunker=RecursiveChunker(chunk_size=1024,
+                             chunk_overlap=50,
+                             separators=["\n\n" ,"" ])
+    # chunker=SemChunker(breakpoint_threshold_type='standard_deviation'
+    #                   )
   )
 
 pinecone_sink = AlloyDBVectorStore.AlloyDBSink(
@@ -54,7 +57,7 @@ pinecone_sink = AlloyDBVectorStore.AlloyDBSink(
 
   )
 
-vertexai_embed = VertexAIEmbed.VertexAIEmbed(api_key="<VertexAI AI KEY>" ,chunk_size=512)
+vertexai_embed = VertexAIEmbed.VertexAIEmbed(api_key="<VertexAI AI KEY>" ,task_type="SEMANTIC_SIMILARITY",chunk_size=512)
 
 pipeline = Pipeline.Pipeline(
     sources=[source],

@@ -12,6 +12,7 @@ from langchain.embeddings.vertexai import VertexAIEmbeddings
 from neumai.Shared.NeumDocument import NeumDocument
 from neumai.Shared.Exceptions import OpenAIConnectionException
 from pydantic import BaseModel, Field
+from vertexai.language_models import TextEmbeddingInput
 
 
 def rate_limit(max_per_minute):
@@ -33,10 +34,21 @@ class CustomVertexAIEmbeddings(VertexAIEmbeddings, BaseModel):
     num_instances_per_batch: int
 
     # Overriding embed_documents method
-    def embed_documents(self, texts: List[str]):
+    def embed_documents(self, texts: List[TextEmbeddingInput]):
         limiter = rate_limit(self.requests_per_minute)
         results = []
         docs = list(texts)
+
+        # results = []
+        # pSize = 5
+        # pList = [texts[i:i + pSize] for i in range(0, len(texts), pSize)]
+        # """Text embedding with a Large Language Model."""
+        # #model = TextEmbeddingModel.from_pretrained(EmbeddingModel)
+        # for p in pList:
+        #     embeddings = self.client.get_embeddings(p)
+        #     results.extend(embeddings)
+        #     for embedding in embeddings:
+        #         vector = embedding.values
 
         while docs:
             # Working in batches because the API accepts maximum 5
@@ -74,13 +86,15 @@ class VertexAIEmbed(EmbedConnector):
     """
     api_key: str = Field(..., description="API key for VertexAI services.")
 
+    task_type: str = Field(...,description="Embedding Task Functions SEMANTIC_SIMILARITY, QUESTION_ANSWERING")
+
     max_retries: Optional[int] = Field(20, description="Maximum number of retries for the connection.")
 
     chunk_size: Optional[int] = Field(512, description="Size of chunks for processing data.")
 
     @property
     def required_properties(self) -> List[str]:
-        return ["api_key"]
+        return ["task_type"]
     @property
     def embed_name(self) -> str:
         return 'VertexAIEmbed'
@@ -88,7 +102,7 @@ class VertexAIEmbed(EmbedConnector):
 
     @property
     def optional_properties(self) -> List[str]:
-        return ['max_retries', 'chunk_size']
+        return ["api_key",'max_retries', 'chunk_size']
 
     def validation(self) -> bool:
         """config_validation connector setup"""
@@ -104,8 +118,12 @@ class VertexAIEmbed(EmbedConnector):
             raise VertexAIConnectionException(f"OpenAI couldn't be initialized. See exception: {e}")
         return True
 
-
-
+    def text_embedding_input(self,sentences: List[str], task_type: str) -> list:
+        embedding_inputs = []
+        for p in sentences:
+            text_embedding_input = TextEmbeddingInput(text=p, task_type=task_type)
+            embedding_inputs.append(text_embedding_input)
+        return embedding_inputs
 
 
     def embed(self, documents: List[NeumDocument]) -> Tuple[List, dict]:
@@ -123,8 +141,10 @@ class VertexAIEmbed(EmbedConnector):
             print("Inside Embed......")
             print(documents[0])
             texts = [x.content for x in documents]
+            embedding_input = self.text_embedding_input(texts,self.task_type)
+
             # do we want to persist some embeddings if they were able to be wrriten but not another "batch" of them? or should we treat all texts as an atomic operation
-            embeddings = embedding.embed_documents(texts=texts)
+            embeddings = embedding.embed_documents(texts=embedding_input)
             # cost_per_token = 0.000000001 # ADA-002 as of Sept 2023
             info = {
                 "estimated_cost": str("Not implemented"),

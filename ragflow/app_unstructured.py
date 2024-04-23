@@ -5,6 +5,8 @@ from typing import List
 from langchain.llms.vertexai import VertexAI
 from neumai.DataConnectors import WebsiteConnector
 from neumai.Loaders import HTMLLoader
+
+from ragflow.utils.chunkers.SemanticChunker import SemChunker
 from tasks import data_extraction
 from pipelines.TriggerSyncTypeEnum import TriggerSyncTypeEnum
 import tasks
@@ -39,10 +41,11 @@ gcs_connector = GCSBlobConnector(
 source = SourceConnector(
     data_connector=gcs_connector,
     loader=UnstructuredLoader(strategy="multimodal",model_name='yolox'),
-    chunker=RecursiveChunker(chunk_size=500,
-                             chunk_overlap=50,
-                             batch_size=1000,
-                             separators=["\n\n", " ", ""])
+    chunker=SemChunker(breakpoint_threshold_type='standard_deviation'
+                      )
+    # chunker=RecursiveChunker(chunk_size=1024,
+    #                          chunk_overlap=100,
+    #                          separators=["\n\n", " ", ""])
   )
 
 pinecone_sink = AlloyDBVectorStore.AlloyDBSink(

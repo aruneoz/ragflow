@@ -64,7 +64,7 @@ def create_app():
           print("Inside Basic")
           source = SourceConnector(
             data_connector=gcs_connector,
-            loader=PDFLoaderV1(),
+            loader=PDFLoaderV1(syn_data=False,dataset_table="test"),
             chunker=RecursiveChunker(chunk_size=data.get("doc_chunk_size"),
                                      chunk_overlap=data.get("doc_chunk_overlap"),
                                      )
@@ -90,7 +90,7 @@ def create_app():
 
         )
 
-        vertexai_embed = VertexAIEmbed.VertexAIEmbed(api_key="<VertexAI AI KEY>", chunk_size=data.get("doc_chunk_size"))
+        vertexai_embed = VertexAIEmbed.VertexAIEmbed(api_key="<VertexAI AI KEY>", task_type=data.get("doc_embed_task_type"),chunk_size=data.get("doc_chunk_size"))
 
 
         pipeline = Pipeline.Pipeline(

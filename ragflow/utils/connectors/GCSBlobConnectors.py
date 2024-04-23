@@ -137,6 +137,8 @@ class GCSBlobConnector(DataConnector):
         if cloudFile.file_identifier.endswith('.pdf'):
             input_pdf = PdfReader(file_path)
             num_batches = round((len(input_pdf.pages)) / self.batch_size)
+            if(num_batches==0):
+                num_batches=1
             print("Batch Size :" + str(self.batch_size)  +  "  Pages " + str(len(input_pdf.pages)))
             print("The no.of batches :" + str(num_batches))
             for b in range(num_batches):

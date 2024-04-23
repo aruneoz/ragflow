@@ -103,8 +103,7 @@ class UnstructuredLoader(Loader):
 
                 elements_fast = partition_pdf(file.file_identifier, strategy="hi_res", mode="elements",
                                               include_metadata=True, combine_text_under_n_chars=512,
-                                              model_name=model_name, infer_table_structure=True,
-                                              extract_images_in_pdf=False, image_output_dir_path=f"images/{file.id}/")
+                                              model_name=model_name, infer_table_structure=True)
             else:
                 elements_fast = partition_pdf(file.file_identifier, strategy="hi_res", mode="elements",
                                               include_metadata=True, combine_text_under_n_chars=512,

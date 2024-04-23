@@ -60,7 +60,7 @@ pinecone_sink = AlloyDBVectorStore.AlloyDBSink(
 
   )
 
-vertexai_embed = VertexAIEmbed.VertexAIEmbed(api_key="<VertexAI AI KEY>")
+vertexai_embed = VertexAIEmbed.VertexAIEmbed(api_key="<VertexAI AI KEY>",task_type="SEMANTIC_SIMILARITY",chunk_size=512)
 
 pipeline = Pipeline.Pipeline(
     sources=[source],
@@ -85,8 +85,7 @@ query_params = st.experimental_get_query_params()
 if "context" not in st.session_state:
     st.session_state["context"] = ""
 if "system_prompt" not in st.session_state:
-    st.session_state["system_prompt"] = "You are a helpful assistant with the knowledge of providing instructions from a tutorail document that answers questions based on the following context:{} . Analyze step by step and answer the question relevant to the context and if there are similar context , the pick the one which is most relevant. The output must be formatted in the MD format and elaborate the answers as step by step instructions. If the context contains the Image Description section and user requests diagram or schematic , then return no response.  Limit your answers to the context provided."
-
+    st.session_state["system_prompt"] = "You are a helpful assistant with the knowledge of travel reservation system. Your task is to answer to the requested question from the context provided below Think step by step and if the question is requesting for specific information , be precise in your answer otherwise if the question is related to performing a specific task then include elaborate instructions. The output must be formatted in the MD format. Limit your answers only from the context provided and do not answer if the information is not provided in the context. {}"
 with st.sidebar:
     st.title("Sabre Chatbot")
     st.markdown("This is the demonstration of RAGFlow framework based on NeumAI , helps you connect and synchronize your data to a vector database. Simply set up a pipeline and let RAGFlow automatically synchronize your data.")
@@ -103,7 +102,7 @@ st.caption("Simple chatbot based on Neum AI and VertexAI")
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
     st.session_state["messages"].append({"role": "system", "content": st.session_state["system_prompt"].format(st.session_state["context"])})
-    st.session_state["messages"].append({"role": "assistant", "content": "How can I help you?", "context":""})
+    # st.session_state["messages"].append({"role": "assistant", "content": "How can I help you?", "context":""})
 
 for msg in st.session_state.messages:
     if(msg["role"] != "system"):
@@ -124,8 +123,8 @@ if prompt := st.chat_input():
       unfiltered = context + '\n\n'.join({result.metadata['text']})
       print(unfiltered)
     #print(f"Search Result: {result.metadata['text']}")
-      #if ('text' in result.metadata and (result.metadata['elementCategory']== 'NarrativeText' or result.metadata['elementCategory']== 'Image' or result.metadata['elementCategory']== 'Table' )):
-      context = context + '\n\n'.join({result.metadata['text']})
+      if ('text' in result.metadata):
+        context = context + '\n\n'.join({result.metadata['text']})
 
         # if ('text_as_html' in result.metadata):
         #     context = context + '\n\n'.join({result.metadata['text_as_html']})
@@ -153,6 +152,8 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     messages = [{k: v for k, v in item.items() if k != 'context'} for item in st.session_state.messages]
+    print("*****************")
+    print(messages)
     response = multiturn_generate_content(str(messages))
     msg = response
     st.session_state.messages.append({"role":"assistant", "content":msg.text, "context":st.session_state["context"]})
@@ -163,3 +164,5 @@ if prompt := st.chat_input():
         if include_context:
             with st.expander("Context"):
                 st.text(st.session_state["context"])
+
+        st.session_state["context"] = ""

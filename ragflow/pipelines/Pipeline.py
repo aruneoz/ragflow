@@ -167,7 +167,7 @@ class Pipeline(BaseModel):
 
     def search(self, query: str, number_of_results: int, filters: List[FilterCondition] = {}) -> List[NeumSearchResult]:
         vector_for_query = self.embed.embed_query(query=query)
-        matches = self.sink.search(vector=vector_for_query, number_of_results=number_of_results, filters=filters)
+        matches = self.sink.search(query=query,vector=vector_for_query, number_of_results=number_of_results, filters=filters)
         return matches
 
     # Todo standardize the model serialization as we are mixing FE and BE concepts into the SDK

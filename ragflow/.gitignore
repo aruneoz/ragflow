@@ -15,5 +15,6 @@ utils/evaluation/wandb
 utils/evaluation/pack
 kgchatbot.py
 text.html
+*.whl
 
 

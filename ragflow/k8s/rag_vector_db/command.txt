@@ -1,19 +1,19 @@
 kubectl create secret generic pgvector-store-secrets \
-    --from-literal=VECTOR_DB=synxisdb \
+    --from-literal=VECTOR_DB=<vectordb> \
     --from-file=VECTOR_USER=postgres \
-    --from-literal=VECTOR_PWD='SynXisSearchTest9'
+    --from-literal=VECTOR_PWD= <vectordbpass>
 
 
 curl --location 'http://10.128.0.49:80/rag/create' \
 --header 'Content-Type: application/json' \
 --data '{
 
-    "bucket_name": "synxis-src",
+    "bucket_name": "<bucket_name>",
     "pdf_batch_size": 100,
     "pdf_loader_strategy": "basic",
     "pdf_table_model": "yolox",
     "doc_chunk_size": 512,
     "doc_chunk_overlap": 100,
-    "vector_db_table_name": "sabre_vector_synxis"
+    "vector_db_table_name": "<vector_db_table_name>"
 
 }'

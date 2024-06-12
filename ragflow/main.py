@@ -81,12 +81,12 @@ def create_app():
         print("Going to connect to Vector Store ..." + database_host)
 
         pgVector_sink = AlloyDBVectorStore.AlloyDBSink(
-          database_host=database_host,  # "34.170.81.51",
-          database_port=database_port,  # "5432",
-          database_user=database_user,  # "admin",
-          database_pwd=database_pwd,  #
-          database_name=database_name,  # "pgvector",
-          database_table_name=data.get("vector_db_table_name"),  # "neumai_vector_test",
+          database_host=database_host,
+          database_port=database_port,
+          database_user=database_user,
+          database_pwd=database_pwd,
+          database_name=database_name,
+          database_table_name=data.get("vector_db_table_name"),
 
         )
 
